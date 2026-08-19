@@ -29,7 +29,7 @@ public class Company {
     private List<Job> jobs;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Review> reviews;
 
 
