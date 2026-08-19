@@ -16,21 +16,21 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "company_table")
-public class Company{
+public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
-     private String name;
-     private String description;
+    private Long id;
+    private String name;
+    private String description;
 
-     @JsonIgnore
-     @OneToMany(mappedBy = "company" , orphanRemoval = true, cascade = CascadeType.ALL)
-     private List<Job> jobs;
+    @JsonIgnore
+    @OneToMany(mappedBy = "company", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Job> jobs;
 
-     @JsonIgnore
-     @OneToMany(cascade = CascadeType.ALL)
-     private List<Review> reviews;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
 
 }

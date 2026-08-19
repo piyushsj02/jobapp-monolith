@@ -4,15 +4,17 @@ import com.info.jobapp.company.Company;
 import com.info.jobapp.company.CompanyRepository;
 import com.info.jobapp.company.CompanyService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
-    private final CompanyRepository  companyRepository;
+    private final CompanyRepository companyRepository;
 
     @Override
     public List<Company> getAllCompanies() {
@@ -26,14 +28,15 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company createCompany(Company company) {
+        log.debug("Request to save Company object : {}", company);
         return companyRepository.save(company);
     }
 
     @Override
     public boolean updateCompany(Long id, Company company) {
         Company existingCompany = getCompanyById(id);
-        if(existingCompany == null){
-           return false;
+        if (existingCompany == null) {
+            return false;
         }
         existingCompany.setName(company.getName());
         existingCompany.setDescription(company.getDescription());
@@ -51,7 +54,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public boolean deleteCompany(Long id) {
         Company existingCompany = getCompanyById(id);
-        if(existingCompany == null){
+        if (existingCompany == null) {
             return false;
         }
         companyRepository.deleteById(existingCompany.getId());
