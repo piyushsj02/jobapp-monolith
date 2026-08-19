@@ -2,16 +2,23 @@ spring:
   application:
     name: jobapp
 
-  h2:
-    console:
-      enabled: true
+  #  h2:
+  #    console:
+  #      enabled: true
+  #  datasource:
+  #    url: jdbc:h2:mem:testdb
+  #    driverClassName: org.h2.Driver
+  #    username: root
+  #    password: root
+
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/jobapp
     username: root
     password: root
 
   jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true

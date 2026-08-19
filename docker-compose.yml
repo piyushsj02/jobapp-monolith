@@ -1,11 +1,10 @@
-
 services:
   postgres:
     container_name: postgres_container
     image: postgres:14
     environment:
-      POSTGRES_USER: psj
-      POSTGRES_PASSWORD: psj
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
@@ -29,7 +28,6 @@ services:
     networks:
       - backend
     restart: unless-stopped
-
 
 
 volumes:
